@@ -1,0 +1,33 @@
+*.class
+
+# sbt specific
+.history
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# gradle
+/.cache
+/build
+/.gradle
+
+# eclipse
+/.classpath
+/.project
+/.settings
+
+# Scala-IDE specific
+/.scala_dependencies
+# IntelliJ
+/.idea*/
+/*.iml
+/*.ipr
+/*.iws
+/out
+
+
+# emacs
+*~

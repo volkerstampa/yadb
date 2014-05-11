@@ -1,0 +1,44 @@
+apply plugin: 'scala'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://repo.typesafe.com/typesafe/releases/"
+    }
+}
+
+def scalaMinorVersion='2.10'
+def akkaVersion = '2.3.2'
+
+dependencies {
+    compile group: 'org.scala-lang', name: 'scala-library', version: "$scalaMinorVersion.3"
+    compile group: 'com.typesafe.akka', name: "akka-actor_$scalaMinorVersion", version: akkaVersion
+    compile group: 'com.typesafe.akka', name: "akka-persistence-experimental_$scalaMinorVersion", version: akkaVersion
+    compile group: 'com.typesafe.play', name: "play-json_$scalaMinorVersion", version: '2.2.3'
+    testCompile group: 'org.scalatest', name: "scalatest_$scalaMinorVersion", version: '2.1.5'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+tasks.withType(ScalaCompile) {
+    scalaCompileOptions.useAnt = false
+}
+
+task rst {
+    ext.srcFile = files(fileTree(dir: 'src/main/doc', include: '*.rst'))
+    ext.destDir = new File(buildDir, 'doc')
+    inputs.file srcFile
+    outputs.file destDir
+} << {
+    destDir.mkdirs()
+    srcFile.each { File rstFile ->
+        ext.htmlFile = new File(destDir, rstFile.getName() - '.rst' + '.html')
+        exec {
+            commandLine('rst2html', '--stylesheet=html4css1.css,src/main/doc/pygments-long.css', rstFile.path, htmlFile.path)
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.12'
+}
