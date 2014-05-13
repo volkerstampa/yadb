@@ -30,3 +30,10 @@ class ActorService(itemActor: ActorRef)(implicit timeout: Timeout) extends ItemS
     (itemActor ? Persistent(UpdateItem(item))).mapTo[Try[Item]]
 }
 // ITEM SERVICE END
+
+/*
+  // ITEM SERVICE UPDATE BEGIN
+  def update(item: Item): Future[Try[Item]] =
+    (itemActor ? UpdateItem(item)).mapTo[Try[Item]]
+  // ITEM SERVICE UPDATE END
+ */

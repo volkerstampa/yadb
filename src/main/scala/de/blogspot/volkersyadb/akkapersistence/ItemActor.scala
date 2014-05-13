@@ -2,7 +2,7 @@ package de.blogspot.volkersyadb.akkapersistence
 
 import scala.util.{Failure, Success, Try}
 import akka.persistence._
-import akka.actor.{Props, ActorRef}
+import akka.actor.Props
 
 
 // ITEM ACTOR BEGIN
@@ -51,6 +51,12 @@ class ItemActor extends Processor {
   }
 }
 // ITEM ACTOR END
+/*
+    // ITEM ACTOR UPDATE BEGIN
+    case UpdateItem(item: Item) =>
+    // ITEM ACTOR UPDATE END
+ */
+
 
 object ItemActor {
   def props(): Props = Props(new ItemActor)
