@@ -52,7 +52,7 @@ such that the following ``findItem`` successfully
 returns the item created before (line 5-6).
 
 The application that is passed to the block
-is extended with some convenience functions and also with a wrapper for the
+is extended with some convenience functions (like ``itemServiceTestExtension``) and also with a wrapper for the
 ``ItemService`` that eases invoking item-commands by waiting for the returned ``Future``\s.
 Let's have a quick look at ``createNewItem``\:
 

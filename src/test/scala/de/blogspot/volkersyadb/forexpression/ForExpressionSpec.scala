@@ -6,6 +6,7 @@ import org.scalatest.WordSpec
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.Matchers
 import scala.collection.immutable.TreeSet
+import scala.reflect.runtime.universe._
 
 @RunWith(classOf[JUnitRunner])
 class ForExpressionSpec extends WordSpec with Matchers {
