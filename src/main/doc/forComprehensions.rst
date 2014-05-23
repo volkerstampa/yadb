@@ -12,36 +12,36 @@ When you start working with scala, you will quickly be confronted with its for-c
 If you loop for example over two collections, you can do this with a for-expression like this:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // SIMPLE FOR BEGIN
-         :end-before: // SIMPLE FOR END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // SIMPLE FOR BEGIN
+    :end-before: // SIMPLE FOR END
+    :number-lines: 1
+    :code: scala
 
 This computes the products of all numbers in ``a`` with all numbers in ``b`` resulting in a list
 of 9 ``Int``\s. The scala compiler actually translates a for-expression into a cascaded set of calls to
 ``flatMap, map, withFilter``. So the example above actually becomes:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // FLATMAP BEGIN
-         :end-before: // FLATMAP END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // FLATMAP BEGIN
+    :end-before: // FLATMAP END
+    :number-lines: 1
+    :code: scala
 
 ``withFilter`` comes into play as soon as you add conditions to the for-expression, so:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // FOR WITH IF BEGIN
-         :end-before: // FOR WITH IF END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // FOR WITH IF BEGIN
+    :end-before: // FOR WITH IF END
+    :number-lines: 1
+    :code: scala
 
 becomes:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // WITHFILTER BEGIN
-         :end-before: // WITHFILTER END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // WITHFILTER BEGIN
+    :end-before: // WITHFILTER END
+    :number-lines: 1
+    :code: scala
 
 The interesting thing here is that the compiler first translates the for-expression into the cascaded form and
 checks afterwards, if the provided expressions actually support the required method calls, e.g. in our case
@@ -49,10 +49,10 @@ checks afterwards, if the provided expressions actually support the required met
 ``flatMap``, ``map`` and ``withFilter``. If you use your type only in a simple for-expression like this:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // MAP ONLY CLASS BEGIN
-         :end-before: // MAP ONLY CLASS END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // MAP ONLY CLASS BEGIN
+    :end-before: // MAP ONLY CLASS END
+    :number-lines: 1
+    :code: scala
 
 you do not need to implement ``flatMap`` or ``withFilter`` at all. You do not even have to be
 generic at all. If your class ``Container`` only supports ``Int``\s
@@ -60,10 +60,10 @@ and the expression after the yield works with ``Int``\s that will compile as
 well. So for the example above ``Container`` could be implemented as:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // INT MAP BEGIN
-         :end-before: // INT MAP END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // INT MAP BEGIN
+    :end-before: // INT MAP END
+    :number-lines: 1
+    :code: scala
 
 So far we basically simplified our custom class and made it just implement what is actually required.
 In addition to that one can also change the signature of these methods in a way that may look surprising.
@@ -76,18 +76,18 @@ type ``A => Boolean``). Let's check out a little example that basically exchange
 meanings of ``map`` and ``withFilter``:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // CONFUSE MAP BEGIN
-         :end-before: // CONFUSE MAP END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // CONFUSE MAP BEGIN
+    :end-before: // CONFUSE MAP END
+    :number-lines: 1
+    :code: scala
 
 The for-expression translates to:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // CONFUSE MAP TRANSLATED BEGIN
-         :end-before: // CONFUSE MAP TRANSLATED END
-	     :number-lines: 1
-	     :code: scala
+    :start-after: // CONFUSE MAP TRANSLATED BEGIN
+    :end-before: // CONFUSE MAP TRANSLATED END
+    :number-lines: 1
+    :code: scala
 
 Even if it might look like, this does not return a ``Container`` with a list of ``Boolean``\s
 (even though the expression after yield evaluates to a ``Boolean``). It rather first adds 2 to each element of the list
@@ -100,18 +100,18 @@ container could for example store the elements in a sorted set and answer filter
 actually looping through the whole set:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // RANGE FILTER BEGIN
-         :end-before: // RANGE FILTER END
-	     :number-lines: 1
-	     :code: scala
+     :start-after: // RANGE FILTER BEGIN
+     :end-before: // RANGE FILTER END
+     :number-lines: 1
+     :code: scala
 
 The for-expression translates to:
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // RANGE FILTER TRANSLATED BEGIN
-         :end-before: // RANGE FILTER TRANSLATED END
-	     :number-lines: 1
-	     :code: scala
+     :start-after: // RANGE FILTER TRANSLATED BEGIN
+     :end-before: // RANGE FILTER TRANSLATED END
+     :number-lines: 1
+     :code: scala
 
 As the function that is passed to ``map`` is basically ignored, any function
 can be passed.
@@ -139,10 +139,10 @@ previous example (with the same definitions of the ``RangeFilter`` class and
 its descendants):
 
 .. include:: ../../test/scala/de/blogspot/volkersyadb/forexpression/ForExpressionSpec.scala
-	     :start-after: // QUERY BUILDER BEGIN
-         :end-before: // QUERY BUILDER END
-	     :number-lines: 1
-	     :code: scala
+     :start-after: // QUERY BUILDER BEGIN
+     :end-before: // QUERY BUILDER END
+     :number-lines: 1
+     :code: scala
 
 In this case the class that is used in the for-comprehension as *source* (``QueryBuilder``)
 is not a container any more.
@@ -158,4 +158,3 @@ is applied to arbitrary datasets.
 
 .. _Slick: http://slick.typesafe.com/
 .. _for-expressions: http://docs.scala-lang.org/tutorials/tour/sequence-comprehensions.html
-
