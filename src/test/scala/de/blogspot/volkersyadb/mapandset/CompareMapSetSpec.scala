@@ -8,7 +8,7 @@ class CompareMapSetSpec extends WordSpec with Matchers {
   case class Person(id: Long, firstName: String, lastName: String)
   
   val personOrder: Ordering[Person] = Ordering.by[Person, Long](_.id)
-  
+  // TODO use javas micro-bench for performance and memory-tool (see eligotech-google-docs for url) for memory
   "Map by id is the same as TreeSet sorted by id" in {
     val ids = 1 to 100
     val personMap = ids.map(id => id -> newPerson(id)).toMap
