@@ -1,10 +1,8 @@
 package de.blogspot.volkersyadb.akkapersistence
 
 import org.scalatest.fixture
-import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 class ItemServiceSpec extends fixture.WordSpec with TestCommons
     with ItemApplicationFixture {
 

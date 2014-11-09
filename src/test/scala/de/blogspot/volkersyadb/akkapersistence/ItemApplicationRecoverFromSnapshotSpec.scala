@@ -1,9 +1,7 @@
 package de.blogspot.volkersyadb.akkapersistence
 
-import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
-@RunWith(classOf[JUnitRunner])
 // RECOVER FROM SNAPSHOT SPEC BEGIN
 class ItemApplicationRecoverFromSnapshotSpec extends ItemApplicationRecoverSpec
     with WithItemApplicationWithSnapshot {

@@ -1,5 +1,6 @@
 package de.blogspot.volkersyadb.akkapersistence
 
+trait NotNull extends Any
 trait CommonItem extends NotNull {
   def description: String
   def rank: Option[Int]

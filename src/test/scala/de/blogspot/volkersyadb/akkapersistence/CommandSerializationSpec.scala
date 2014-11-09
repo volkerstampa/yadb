@@ -3,11 +3,9 @@ package de.blogspot.volkersyadb.akkapersistence
 import org.scalatest.fixture
 import akka.serialization.{Serializer, SerializationExtension}
 import de.blogspot.volkersyadb.akkapersistence.ItemActor._
-import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 
-@RunWith(classOf[JUnitRunner])
 class CommandSerializationSpec extends fixture.WordSpec with TestCommons
   with ItemApplicationFixture {
 

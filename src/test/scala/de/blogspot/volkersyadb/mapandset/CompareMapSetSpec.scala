@@ -1,11 +1,9 @@
 package de.blogspot.volkersyadb.mapandset
 
-import org.junit.runner.RunWith
 import org.scalatest.{Matchers, WordSpec}
 import org.scalatest.junit.JUnitRunner
 import scala.collection.immutable.TreeSet
 
-@RunWith(classOf[JUnitRunner])
 class CompareMapSetSpec extends WordSpec with Matchers {
   case class Person(id: Long, firstName: String, lastName: String)
   
